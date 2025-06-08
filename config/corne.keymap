@@ -9,22 +9,6 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    macros {
-        tplover: tplover {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp PERIOD>,
-                <&macro_release>,
-                <&kp LCTRL>;
-
-            label = "TPLOVER";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
