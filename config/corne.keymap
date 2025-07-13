@@ -85,26 +85,37 @@
             tapping-term-ms = <190>;
             bindings = <&shift>, <&kp>;
         };
+
+        hml: homewrow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_LEFT_HAND";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <6 7 9 8 11 23 35 34 21 22 10 33 20 32 31 19 18 30 40 41 39>;
+        };
+
+        hmr: homewrow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_RIGHT_HAND";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        plover_layout {
-            bindings = <
-&none  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6     &kp N7  &kp N8  &kp N9  &kp N0    &kp BSPC
-&none  &kp Q   &kp W   &kp E   &kp R   &kp T        &kp Y      &kp U   &kp I   &kp O   &kp P     &kp LBKT
-&to 1  &kp A   &kp S   &kp D   &kp F   &kp G        &kp H      &kp J   &kp K   &kp L   &kp SEMI  &kp APOS
-                       &kp C   &kp V   &kp SPACE    &kp ENTER  &kp N   &kp M
-            >;
-        };
-
         qwer_layer {
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 2  &kp SPACE    &kp RET  &mo 3  &kp RALT
+&kp TAB    &kp Q         &kp W         &kp E        &kp R            &kp T        &kp Y    &kp U             &kp I        &kp O         &kp P            &kp BSLH
+&kp LCTRL  &hml LSHFT A  &hml LCTRL S  &hml LALT D  &hml LEFT_WIN F  &kp G        &kp H    &hmr RIGHT_GUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHFT SEMI  &kp SQT
+&kp LSHFT  &kp Z         &kp X         &kp C        &kp V            &kp B        &kp N    &kp M             &kp COMMA    &kp DOT       &kp FSLH         &kp ESC
+                                       &kp LGUI     &mo 1            &kp SPACE    &kp RET  &mo 2             &kp RALT
             >;
         };
 
@@ -135,6 +146,15 @@
 &kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
                              &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+            >;
+        };
+
+        plover_layout {
+            bindings = <
+&none  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6     &kp N7  &kp N8  &kp N9  &kp N0    &kp BSPC
+&none  &kp Q   &kp W   &kp E   &kp R   &kp T        &kp Y      &kp U   &kp I   &kp O   &kp P     &kp LBKT
+&to 0  &kp A   &kp S   &kp D   &kp F   &kp G        &kp H      &kp J   &kp K   &kp L   &kp SEMI  &kp APOS
+                       &kp C   &kp V   &kp SPACE    &kp ENTER  &kp N   &kp M
             >;
         };
     };
